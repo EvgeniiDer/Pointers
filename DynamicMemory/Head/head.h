@@ -16,14 +16,17 @@ class MyArray{
         for(int i = 0; i < ELEM; i++)
             {
                 arr[i] = std::rand() % 100;
-            }            
-                            }
-        int get_elem();
-        void push_back(int);
-        void push_front(int);
-        void insert(int);
-        void pop_back(int);
-        void pop_front(int);
+            } 
+                       }
+        int operator[](int n)const;
+        int &operator[](int n);                    
+        int get_elem(); 
+        void push_back(const int&);
+        void push_front(const int&);
+        int insert(const int&, const int&);
+        void pop_back();
+
+        void pop_front();
         void erase(int);
         void show_my_array();
         ~MyArray();
