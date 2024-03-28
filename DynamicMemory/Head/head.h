@@ -24,10 +24,10 @@ class MyArray{
         void push_back(const int&);
         void push_front(const int&);
         int insert(const int&, const int&);
+        void pop_front();       
         void pop_back();
 
-        void pop_front();
-        void erase(int);
+        int erase(const int&);
         void show_my_array();
         ~MyArray();
 

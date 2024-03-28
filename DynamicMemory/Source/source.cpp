@@ -111,10 +111,55 @@ void MyArray::pop_front()
     delete[]newArray;
     newArray = nullptr;
 }
-/*void MyArray::pop_front()
+void MyArray::pop_back()
 {
+    ELEM--;
+    int *newArray = new int[ELEM];
+    for(int i = 0; i < ELEM; i++)
+    {
+        newArray[i] = arr[i];
+    }
+    delete[]arr;
+    arr = nullptr;
+    arr = new int[ELEM];
+    for(int i = 0; i < ELEM; i++)
+    {
+        arr[i] = newArray[i];
+    }
+    delete[]newArray;
+    newArray = nullptr;
+}
 
-}*/
+int MyArray::erase(const int& _position)
+{
+    if(_position == 0 || _position > ELEM)
+    {
+        std::cerr << "The element cannot be less than 0 or More then ELEM\n Failuer EXIT";
+        return false;
+    }
+    int newElement = ELEM;
+    int *newArray = new int[--newElement];
+    for(int i = 0; i < _position; i++)
+    {
+        newArray[i] = arr[i];
+    }
+    for(int i = _position + 1; i < ELEM; i++)
+    {
+        newArray[i - 1] = arr[i];
+    }
+    ELEM = newElement;
+    delete[]arr;
+    arr = nullptr;
+    arr = new int[ELEM];
+
+    for(int i = 0; i < ELEM; i++)
+    {
+        arr[i] = newArray[i];
+    }
+    delete[]newArray;
+    newArray = nullptr;
+    return 1;
+}
 MyArray::~MyArray()
 {
     std::cout << "!!Distructor!!" << std::endl;

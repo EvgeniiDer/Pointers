@@ -20,8 +20,17 @@ int main()
     
     array.show_my_array();
     array.pop_front();
+    array.pop_front();
     std::cout << "\n";
     array.show_my_array();
+    std::cout << "\n";
+    array.pop_back();
+    array.show_my_array();
+
+    array.erase(1);
+    array.show_my_array();
+
     std::cout << "Total Array's ELEMENTS: " << array.get_elem() << std::endl;
+
     return 0;
 }
