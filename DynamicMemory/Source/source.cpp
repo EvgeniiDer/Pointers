@@ -92,7 +92,7 @@ int MyArray::insert(const int &_position, const int &addInsert)
     return true;
 }
 
-void MyArray::pop_back()
+void MyArray::pop_front()
 {
     int newElement = ELEM;
     int *newArray = new int[--newElement];
@@ -111,6 +111,10 @@ void MyArray::pop_back()
     delete[]newArray;
     newArray = nullptr;
 }
+/*void MyArray::pop_front()
+{
+
+}*/
 MyArray::~MyArray()
 {
     std::cout << "!!Distructor!!" << std::endl;
