@@ -27,7 +27,7 @@ class MyArray{
         void pop_front();       
         void pop_back();
 
-        int erase(const int&);
+        bool erase(const int&);
         void show_my_array();
         ~MyArray();
 

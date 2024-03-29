@@ -64,7 +64,7 @@ void MyArray::push_front(const int &addFront)
 int MyArray::insert(const int &_position, const int &addInsert)
 {
 
-    if(_position == 0 || _position > ELEM)
+    if(_position <= 0 || _position > ELEM)
     {
         std::cerr << "The element cannot be less than 0 or More then ELEM\n Failuer EXIT";
         return false;
@@ -130,20 +130,21 @@ void MyArray::pop_back()
     newArray = nullptr;
 }
 
-int MyArray::erase(const int& _position)
+bool MyArray::erase(const int& _position)
 {
     if(_position == 0 || _position > ELEM)
     {
-        std::cerr << "The element cannot be less than 0 or More then ELEM\n Failuer EXIT";
         return false;
     }
+    int position = _position - 1;
     int newElement = ELEM;
+    std::cout << "Elem: " << newElement << std::endl;
     int *newArray = new int[--newElement];
-    for(int i = 0; i < _position; i++)
+    for(int i = 0; i < position ; i++)
     {
         newArray[i] = arr[i];
     }
-    for(int i = _position + 1; i < ELEM; i++)
+    for(int i = position + 1; i < ELEM; i++)
     {
         newArray[i - 1] = arr[i];
     }
@@ -158,7 +159,7 @@ int MyArray::erase(const int& _position)
     }
     delete[]newArray;
     newArray = nullptr;
-    return 1;
+    return true;
 }
 MyArray::~MyArray()
 {
