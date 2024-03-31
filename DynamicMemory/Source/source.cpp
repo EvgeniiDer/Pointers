@@ -44,8 +44,8 @@ void MyArray::push_back(const int &addBack)
 }
 void MyArray::push_front(const int &addFront)
 {
-    ELEM++;
-    int *newArr = new int[ELEM];
+    
+    int *newArr = new int[ELEM + 1];
     newArr[0] = addFront;
     for(int i = 0; i < ELEM; i++)
     {
@@ -53,6 +53,7 @@ void MyArray::push_front(const int &addFront)
     }
     delete[]arr;
     arr = nullptr;
+    ELEM++;
     arr = new int[ELEM];
     for(int i = 0; i < ELEM; i++)
     {
