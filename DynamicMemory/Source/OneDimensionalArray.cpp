@@ -1,4 +1,4 @@
-#include "../Head/head.h"
+#include "../Head/OneDimensionalArray.h"
 
 
 MyArray::MyArray(int _ELEM) : ELEM{_ELEM},

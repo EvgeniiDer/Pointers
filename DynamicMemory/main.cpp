@@ -1,11 +1,11 @@
-#include"../DynamicMemory/Head/head.h"
+#include"../DynamicMemory/Head/OneDimensionalArray.h"
 
 //constexpr int ELEM = 5;
 
 int main()
 {
     MyArray array(3);
-    //MyArray ar Vse rabotaet no gluchit Visual studio code
+    //MyArray ar; Vse rabotaet no gluchit Visual studio code
     std::cout << " Push Element 99999 at the back of Array! \n";
     array.push_back(99999);
     array.show_my_array();
