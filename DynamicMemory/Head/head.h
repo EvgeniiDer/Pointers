@@ -2,22 +2,20 @@
 #define HEAD_H_
 #include<iostream>
 #include<ctime>
-
+#include<algorithm>
 class MyArray{
     private:
         int ELEM;
         int *arr;
     public:
-         MyArray(int _ELEM) : ELEM{_ELEM},
-                              arr{new int[_ELEM]}
-                            {
-        std::cout << "!!Constructor!!" << std::endl;
-        std::srand(std::time(0));
-        for(int i = 0; i < ELEM; i++)
-            {
-                arr[i] = std::rand() % 100;
-            } 
-                       }
+       // MyArray(): ELEM(0), arr(nullptr){} Zakomentiroval Gluchit Visual Studio Code
+        MyArray(int _ELEM); 
+        MyArray(const MyArray&);
+        MyArray& operator=(const MyArray&);
+
+        MyArray(MyArray&&);
+        MyArray& operator=(MyArray&&);
+
         int operator[](int n)const;
         int &operator[](int n);                    
         int get_elem(); 

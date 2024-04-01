@@ -1,6 +1,51 @@
 #include "../Head/head.h"
 
 
+MyArray::MyArray(int _ELEM) : ELEM{_ELEM},
+                              arr{new int[_ELEM]}
+                            {
+        std::cout << "!!Constructor!!" << std::endl;
+        std::srand(std::time(0));
+        for(int i = 0; i < ELEM; i++)
+            {
+                arr[i] = std::rand() % 100;
+            } 
+                       }
+MyArray::MyArray(const MyArray& arg) : ELEM(arg.ELEM),
+                                       arr(new int[arg.ELEM])
+{
+    for(int i = 0 ; i < ELEM; i++)
+    {
+        arr[i] = arg[i];
+    }
+}
+MyArray &MyArray::operator=(const MyArray & arg)
+{
+    int *buffer = new int[arg.ELEM];
+    std::copy(arg.arr, arg.arr + arg.ELEM, buffer);
+    delete[]arr;
+    arr = nullptr;
+    arr = buffer;
+    ELEM = arg.ELEM;
+    return *this;
+}
+MyArray::MyArray(MyArray &&arg) : ELEM(arg.ELEM), arr(arg.arr)
+{
+    arg.ELEM = 0;
+    arg.arr = nullptr;
+
+}
+MyArray &MyArray::operator=(MyArray &&arg)
+{
+    delete[]arr;
+    arr = nullptr;
+    arr = arg.arr;
+    ELEM = arg.ELEM;
+    arg.arr = nullptr;
+    arg.ELEM = 0;
+    return *this;
+
+}
 int MyArray::get_elem()
 {
     return ELEM;
