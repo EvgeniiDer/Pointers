@@ -1,5 +1,5 @@
-#ifndef HEAD_H_
-#define HEAD_H_
+#ifndef ONEDIMENSIONALARRAY_H_
+#define ONEDIMENSIONALARRAY_H_
 #include<iostream>
 #include<ctime>
 #include<algorithm>

@@ -1,0 +1,2 @@
+#include"../Head/twodinarray.h"
+
