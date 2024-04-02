@@ -6,13 +6,21 @@ class TwoDimensionalArray: public MyArray
 {
     private:
     int row;
-    int **demArray;
+    int **dimArray;
     public:
-        TwoDimensionalArray() : MyArray(), row(0){
+        TwoDimensionalArray() : MyArray(), row(0), dimArray(nullptr){
             
         }
-        TwoDimensionalArray(const int, const int);
-        void allocate(void);//Allocate memory for two-dimensional array
+        /*TwoDimensionalArray(const int _row, const int _colm): MyArray(_colm),
+                                                              row(_row),
+                                                              dimArray(new int*[_row])
+            {
+                for(int i = 0; i < row; i++)
+                    for(int j = 0; j < MyArray(_colm).get_elem(); j++)
+                        dimArray[i] = new int[j];   
+            }*/
+        void print()const;
+        void allocate(const int, const int);//Allocate memory for two-dimensional array
         void clear(void);// Free memory, delete two-dimensional array
         void push_row_back(void); // add row to back of tow-dimensional array
         void push_row_front(void);// add row of two dimensional array to front
@@ -29,7 +37,11 @@ class TwoDimensionalArray: public MyArray
         void pop_col_back(void);// pop a column from the back of two dimensional array
         void pop_col_front(void);// pop a column from the front of two dimensional array
         void erase_col(void); // erase a column by the index from a two dimensonal array
-        ~TwoDimensionalArray(){};
+        ~TwoDimensionalArray(){
+            /*for(int i = 0; i < row; i++)
+                delete[]dimArray[i];*/
+                delete[]dimArray;
+        };
 
 };
 

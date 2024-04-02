@@ -3,6 +3,7 @@
 int main()
 {
     TwoDimensionalArray array;
-    std::cout << "Hi all" << std::endl;
+    array.allocate(7 , 5);
+
     return 0;
 }
