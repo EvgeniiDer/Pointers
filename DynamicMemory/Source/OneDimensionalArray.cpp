@@ -1,15 +1,11 @@
 #include "../Head/OneDimensionalArray.h"
 
 
-MyArray::MyArray(int _ELEM) : ELEM{_ELEM},
+MyArray::MyArray(const int _ELEM) : ELEM{_ELEM},
                               arr{new int[_ELEM]}
                             {
         std::cout << "!!Constructor!!" << std::endl;
-        std::srand(std::time(0));
-        for(int i = 0; i < ELEM; i++)
-            {
-                arr[i] = std::rand() % 100;
-            } 
+        
                        }
 MyArray::MyArray(const MyArray& arg) : ELEM(arg.ELEM),
                                        arr(new int[arg.ELEM])
@@ -46,6 +42,17 @@ MyArray &MyArray::operator=(MyArray &&arg)
     return *this;
 
 }
+
+int* MyArray::allocFillOneDimensionalArray()
+{
+    std::srand(std::time(0));
+        for(int i = 0; i < ELEM; i++)
+            {
+                arr[i] = std::rand() % 100;
+            }
+    return arr; 
+}
+
 int MyArray::get_elem()
 {
     return ELEM;

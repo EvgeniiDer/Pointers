@@ -8,9 +8,10 @@ class MyArray{
         int ELEM;
         int *arr;
     public:
-       // MyArray(): ELEM(0), arr(nullptr){} Zakomentiroval Gluchit Visual Studio Code
-        MyArray(int _ELEM); 
+        MyArray(): ELEM(0), arr(nullptr){} //Zakomentiroval Gluchit Visual Studio Code
+        MyArray(const int _ELEM); 
         MyArray(const MyArray&);
+        int* allocFillOneDimensionalArray();
         MyArray& operator=(const MyArray&);
 
         MyArray(MyArray&&);
