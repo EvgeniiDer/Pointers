@@ -157,11 +157,6 @@ bool TwoDimensionalArray::insert_row(const int& position, bool b)
         //!!!!!Another method below!!!!
         //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
         //TwoDimensionalArray::clear(buffer, row);
+        return true;
     }
-
-    
-    return true;
-
-    
-
 }
