@@ -1,6 +1,14 @@
 #include"../Head/twodimensionalarray.h"
 
 
+int TwoDimensionalArray::getRow()
+{
+    return row;
+}
+int TwoDimensionalArray::getColm()
+{
+    return colm;
+}
 void TwoDimensionalArray::fill_array() 
 {
     srand(std::time(0));
@@ -70,6 +78,31 @@ void TwoDimensionalArray::push_row_back(bool b)
             for(int i = 0; i < colm; i++)
                 buffer[bufferRow - 1][i] = rand() % 100;
     }
+    row = bufferRow;
+    dimArray = TwoDimensionalArray::allocate(row, colm);
+    TwoDimensionalArray::copy(dimArray, buffer, row, colm);
+    TwoDimensionalArray::clear(buffer, row);
+}
+void TwoDimensionalArray::push_row_front(bool b)
+{
+    int bufferRow = row + 1;
+    int **buffer = TwoDimensionalArray::allocate(bufferRow, colm);
+    for(int i = 0; i < row; i++)
+        for(int j = 0; j < colm; j++)
+            {
+                buffer[i + 1][j] = dimArray[i][j];
+            }
+    if(b == true)
+    {
+        for(int i = 0; i < colm; i++)
+            buffer[0][i] = 1111;
+    }
+    else{
+            srand(time(0));
+            for(int i = 0; i < colm; i++)
+            buffer[0][i] = rand() % 100;
+    }
+    TwoDimensionalArray::clear(dimArray, row);
     row = bufferRow;
     dimArray = TwoDimensionalArray::allocate(row, colm);
     TwoDimensionalArray::copy(dimArray, buffer, row, colm);

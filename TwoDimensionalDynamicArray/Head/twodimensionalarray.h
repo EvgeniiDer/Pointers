@@ -21,11 +21,13 @@ class TwoDimensionalArray
             for(int i = 0; i < _row; i++)
                 dimArray[i] = new int[_colm];
         }        
+        int getRow();
+        int getColm();
         void fill_array();
         void print()const;
         void push_row_back(bool); // add row to back of tow-dimensional array
         
-        void push_row_front(void);// add row of two dimensional array to front
+        void push_row_front(bool);// add row of two dimensional array to front
         
         void insert_row(void);// isert a row by index into a two dimensional array
         void pop_row_back(void);// pop row from back of two dimensional array
