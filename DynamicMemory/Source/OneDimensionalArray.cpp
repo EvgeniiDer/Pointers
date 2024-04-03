@@ -4,7 +4,7 @@
 MyArray::MyArray(const int _ELEM) : ELEM{_ELEM},
                               arr{new int[_ELEM]}
                             {
-        std::cout << "!!Constructor!!" << std::endl;
+        //std::cout << "!!Constructor!!" << std::endl;
         
                        }
 MyArray::MyArray(const MyArray& arg) : ELEM(arg.ELEM),
@@ -43,16 +43,21 @@ MyArray &MyArray::operator=(MyArray &&arg)
 
 }
 
-int* MyArray::allocFillOneDimensionalArray()
+int& MyArray::FillOneDimensionalArray()
 {
     std::srand(std::time(0));
         for(int i = 0; i < ELEM; i++)
             {
                 arr[i] = std::rand() % 100;
             }
-    return arr; 
+    return *arr; 
 }
 
+int MyArray::get_column(const MyArray& arg)
+{
+    int column = arg.ELEM;
+    return column;
+}
 int MyArray::get_elem()
 {
     return ELEM;
@@ -216,7 +221,7 @@ bool MyArray::erase(const int& _position)
 }
 MyArray::~MyArray()
 {
-    std::cout << "!!Distructor!!" << std::endl;
+    //std::cout << "!!Distructor!!" << std::endl;
     delete[]arr;
     arr = nullptr;
 

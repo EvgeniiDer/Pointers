@@ -6,7 +6,7 @@ int main()
 {
     
     MyArray array(5);
-    array.allocFillOneDimensionalArray();
+    array.FillOneDimensionalArray();
     //MyArray ar; Vse rabotaet no gluchit Visual studio code
     std::cout << " Push Element 99999 at the back of Array! \n";
     array.push_back(99999);
