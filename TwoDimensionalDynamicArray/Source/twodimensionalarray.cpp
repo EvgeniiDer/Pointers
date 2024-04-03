@@ -1,11 +1,11 @@
 #include"../Head/twodimensionalarray.h"
 
 
-int TwoDimensionalArray::getRow()
+int TwoDimensionalArray::getRow()const
 {
     return row;
 }
-int TwoDimensionalArray::getColm()
+int TwoDimensionalArray::getColm()const
 {
     return colm;
 }
@@ -28,6 +28,8 @@ void TwoDimensionalArray::print()const
             }
             std::cout << std::endl;
         }
+    std::cout << "Total Row: " << TwoDimensionalArray::getRow() <<
+                 " | Total Column: " << TwoDimensionalArray::getColm() << std::endl;
     std::cout << std::endl;
 }
 void TwoDimensionalArray::print(int** arr, const int& _row, const int& _colm)const
@@ -107,4 +109,59 @@ void TwoDimensionalArray::push_row_front(bool b)
     dimArray = TwoDimensionalArray::allocate(row, colm);
     TwoDimensionalArray::copy(dimArray, buffer, row, colm);
     TwoDimensionalArray::clear(buffer, row);
+}
+bool TwoDimensionalArray::insert_row(const int& position, bool b)
+{
+    int realPosition = position -1;
+    if(realPosition < 0 || realPosition >= row)
+        {
+            return false;
+        }
+    else if(realPosition == 0)
+    {
+        TwoDimensionalArray::push_row_front(b);
+        return true;
+    }
+    else if(realPosition == row - 1)
+    {
+        TwoDimensionalArray::push_row_back(b);
+        return true;
+    }
+    else
+    {
+        int bufferRow = row + 1;
+        int** buffer = TwoDimensionalArray::allocate(bufferRow, colm);   
+        for(int i = 0; i < realPosition; i++)
+            for(int j = 0; j < colm; j++)
+                buffer[i][j] = dimArray[i][j];
+        if(b == true)
+            {
+                for(int i = 0; i < colm; i++)
+                    buffer[realPosition][i] = 5555;
+            }
+        else
+            {
+                srand(time(0));
+                for(int i = 0; i < colm; i++)
+                    buffer[realPosition][i] = rand() % 100;
+            }
+        for(int i = realPosition + 1; i < bufferRow; i++)
+            for(int j = 0; j < colm; j++)
+                {
+                    buffer[i][j] = dimArray[i - 1][j];
+                }
+        TwoDimensionalArray::clear(dimArray, row);
+        row = bufferRow;
+        dimArray = TwoDimensionalArray::allocate(row, colm);
+        dimArray = buffer;
+        //!!!!!Another method below!!!!
+        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
+        //TwoDimensionalArray::clear(buffer, row);
+    }
+
+    
+    return true;
+
+    
+
 }

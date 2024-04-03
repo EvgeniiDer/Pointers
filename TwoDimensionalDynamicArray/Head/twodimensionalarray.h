@@ -21,15 +21,14 @@ class TwoDimensionalArray
             for(int i = 0; i < _row; i++)
                 dimArray[i] = new int[_colm];
         }        
-        int getRow();
-        int getColm();
-        void fill_array();
-        void print()const;
+        int getRow()const;
+        int getColm()const;
+        void fill_array(); // Fill array with random integer
+        void print()const; 
         void push_row_back(bool); // add row to back of tow-dimensional array
-        
         void push_row_front(bool);// add row of two dimensional array to front
         
-        void insert_row(void);// isert a row by index into a two dimensional array
+        bool insert_row(const int&, bool);// isert a row by index into a two dimensional array
         void pop_row_back(void);// pop row from back of two dimensional array
         void pop_row_front(void);// pop row from front of two dimensional array
         void erase_row(void);// erase row by index from a two dimensional array

@@ -12,5 +12,12 @@ int main()
     std::cout << " \n Function push_row_front((false(random intege), true(last raw fill with 1111)) add row at the front of Two-Dimensional array\n";
     array.push_row_front(true);
     array.print();
+    std::cout << "\n Function insert_row(Position = Position - 1, (false(random intege), true(last raw fill with 1111 at the Front \n" << 
+                    "9999 at the back ant 5555 in the middle)) insert a row according possition\n";
+    int pos; 
+    std::cout << "Enter the posicion: ";
+    std::cin >> pos;
+    array.insert_row(pos, true);
+    array.print();
     return 0;
 }
