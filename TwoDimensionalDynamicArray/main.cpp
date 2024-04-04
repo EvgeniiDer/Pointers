@@ -2,7 +2,7 @@
 
 int main()
 {
-    TwoDimensionalArray array(2, 5);
+    TwoDimensionalArray array(5, 5);
     std::cout << "  \nMemory was allocated for two dimensional array and it was filled with random integer values from 0 to 99\n";
     array.fill_array();
     array.print();
@@ -18,6 +18,22 @@ int main()
     std::cout << "Enter the position(POSITION Must be not less 1 and no more the " << array.getRow() << "): ";
     std::cin >> pos;
     if(array.insert_row(pos, true))
+        array.print();
+    else{
+        std::cerr << "You entered position less then 1 or more " << array.getRow() <<
+        "\n\t\t\aEXIT_FAILURE" <<  "\n";
+        return EXIT_FAILURE;
+    }
+    std::cout << "Funciton pop_row_back() pop row from the back of two-dimensional array\n";
+    array.pop_row_back();
+    array.print();
+    std::cout << "Function pop_row_front() pop a row from the front of the two-dimensional array\n";
+    array.pop_row_front();
+    array.print();
+    std::cout << "Funciion erase_row(coont int&) Erase the row number specified in the function argument\n";
+    pos = 0;
+    std::cin >> pos;
+    if(array.erase_row(pos))
         array.print();
     else{
         std::cerr << "You entered position less then 1 or more " << array.getRow() <<
