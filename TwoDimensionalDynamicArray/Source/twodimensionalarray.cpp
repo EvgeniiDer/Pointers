@@ -1,6 +1,56 @@
 #include"../Head/twodimensionalarray.h"
 
 
+TwoDimensionalArray::TwoDimensionalArray(const TwoDimensionalArray& arg) : colm(arg.colm),
+                                                                           row(arg.row),   
+                                                                           dimArray(new int*[arg.row])
+{
+    for(int i = 0; i < row; i++)
+        dimArray[i] = new int[colm];
+    for(int i = 0; i < row; i++)
+        for(int j = 0; j < colm; j++)
+            dimArray[i][j] = arg.dimArray[i][j];
+}
+TwoDimensionalArray &TwoDimensionalArray::operator=(const TwoDimensionalArray& arg) 
+{
+    int** buffer = new int*[arg.row];
+    for(int i = 0; i < arg.row; i++)
+        buffer[i] = new int[arg.colm];
+    for(int i = 0; i < arg.row; i++)
+        for(int j = 0; j < arg.colm; j++)
+            buffer[i][j] = arg.dimArray[i][j];
+    for(int i = 0; i < row; i++)
+        delete[]dimArray[i];
+    delete[]dimArray;
+    dimArray = buffer;
+    row = arg.row;
+    colm = arg.colm;
+    return *this;
+}
+
+TwoDimensionalArray::TwoDimensionalArray(TwoDimensionalArray&& arg) : colm(arg.colm),
+                                                                      row(arg.row),
+                                                                      dimArray(arg.dimArray)
+
+{
+    arg.colm = 0;
+    arg.row = 0;
+    arg.dimArray = nullptr;
+}
+TwoDimensionalArray &TwoDimensionalArray::operator=(TwoDimensionalArray&& arg)
+{
+    for(int i = 0; i < row; i++)
+        delete[]dimArray[i];
+    delete[] dimArray;
+    dimArray = nullptr;
+    dimArray = arg.dimArray;
+    colm = arg.colm;
+    row = arg.row;
+    arg.dimArray = nullptr;
+    arg.colm = 0;
+    arg.row = 0;
+    return *this;
+}
 int TwoDimensionalArray::getRow()const
 {
     return row;

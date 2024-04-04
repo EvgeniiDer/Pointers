@@ -2,7 +2,8 @@
 
 int main()
 {
-    TwoDimensionalArray array(5, 5);
+    TwoDimensionalArray array2(5, 5);
+    TwoDimensionalArray array = array2;
     std::cout << "  \nMemory was allocated for two dimensional array and it was filled with random integer values from 0 to 99\n";
     array.fill_array();
     array.print();
