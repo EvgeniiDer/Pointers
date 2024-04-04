@@ -17,7 +17,7 @@ class MyArray{
         MyArray(MyArray&&);
         MyArray& operator=(MyArray&&);
 
-        static int get_column(const MyArray&);
+        
         int operator[](int n)const;
         int &operator[](int n);                    
         int get_elem(); 

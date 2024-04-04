@@ -20,7 +20,15 @@ class TwoDimensionalArray
         {
             for(int i = 0; i < _row; i++)
                 dimArray[i] = new int[_colm];
-        }        
+        } 
+        
+        TwoDimensionalArray(const TwoDimensionalArray&);
+        TwoDimensionalArray& operator=(const TwoDimensionalArray&);
+
+        TwoDimensionalArray(TwoDimensionalArray&&);
+        TwoDimensionalArray& operator=(TwoDimensionalArray&&);
+        
+        
         int getRow()const;
         int getColm()const;
         void fill_array(); // Fill array with random integer
@@ -31,13 +39,12 @@ class TwoDimensionalArray
         void pop_row_back();// pop row from back of two dimensional array
         void pop_row_front();// pop row from front of two dimensional array
         bool erase_row(const int&);// erase row by index from a two dimensional array
-        
-        void push_col_back(void); // add column to the back of two dimensional array
-        void push_col_front(void); //add column to the front of two dimensional array
-        void insert_col(void); //insert a column by index into a two dimensional array
-        void pop_col_back(void);// pop a column from the back of two dimensional array
-        void pop_col_front(void);// pop a column from the front of two dimensional array
-        void erase_col(void); // erase a column by the index from a two dimensonal array
+        void push_col_back(bool); // add column to the back of two dimensional array
+        void push_col_front(bool); //add column to the front of two dimensional array
+        bool insert_col(const int&, bool); //insert a column by index into a two dimensional array
+        void pop_col_back();// pop a column from the back of two dimensional array
+        void pop_col_front();// pop a column from the front of two dimensional array
+        bool erase_col(const int&); // erase a column by the index from a two dimensonal array
         ~TwoDimensionalArray(){
             for(int i = 0; i < row; i++)
                 delete[]dimArray[i];

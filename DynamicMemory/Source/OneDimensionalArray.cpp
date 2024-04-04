@@ -53,11 +53,7 @@ int& MyArray::FillOneDimensionalArray()
     return *arr; 
 }
 
-int MyArray::get_column(const MyArray& arg)
-{
-    int column = arg.ELEM;
-    return column;
-}
+
 int MyArray::get_elem()
 {
     return ELEM;
