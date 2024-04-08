@@ -131,9 +131,7 @@ void TwoDimensionalArray::push_row_back(bool b)
                 buffer[bufferRow - 1][i] = rand() % 100;
     }
     row = bufferRow;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
-    TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-    TwoDimensionalArray::clear(buffer, row);
+    dimArray = buffer;
 }
 void TwoDimensionalArray::push_row_front(bool b)
 {
@@ -156,9 +154,7 @@ void TwoDimensionalArray::push_row_front(bool b)
     }
     TwoDimensionalArray::clear(dimArray, row);
     row = bufferRow;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
-    TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-    TwoDimensionalArray::clear(buffer, row);
+    dimArray = buffer;
 }
 bool TwoDimensionalArray::insert_row(const int& position, bool b)
 {
@@ -170,11 +166,6 @@ bool TwoDimensionalArray::insert_row(const int& position, bool b)
     else if(realPosition == 0)
     {
         TwoDimensionalArray::push_row_front(b);
-        return true;
-    }
-    else if(realPosition == row - 1)
-    {
-        TwoDimensionalArray::push_row_back(b);
         return true;
     }
     else
@@ -202,11 +193,7 @@ bool TwoDimensionalArray::insert_row(const int& position, bool b)
                 }
         TwoDimensionalArray::clear(dimArray, row);
         row = bufferRow;
-        dimArray = TwoDimensionalArray::allocate(row, colm);
         dimArray = buffer;
-        //!!!!!Another method below!!!!
-        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-        //TwoDimensionalArray::clear(buffer, row);
         return true;
     }
 }
@@ -217,7 +204,6 @@ void TwoDimensionalArray::pop_row_back()
     TwoDimensionalArray::copy(buffer, dimArray, bufferRow, colm);
     TwoDimensionalArray::clear(dimArray, row);
     row = bufferRow;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;
 }
 void TwoDimensionalArray::pop_row_front()
@@ -231,7 +217,6 @@ void TwoDimensionalArray::pop_row_front()
             }
     TwoDimensionalArray::clear(dimArray, row);
     row = bufferRow;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;
 }
 bool TwoDimensionalArray::erase_row(const int& position)
@@ -266,11 +251,7 @@ bool TwoDimensionalArray::erase_row(const int& position)
                 }
         TwoDimensionalArray::clear(dimArray, row);
         row = bufferRow;
-        dimArray = TwoDimensionalArray::allocate(row, colm);
         dimArray = buffer;
-        //!!!!!Another method below!!!!
-        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-        //TwoDimensionalArray::clear(buffer, row);
         return true;
     }
 
@@ -291,7 +272,6 @@ void TwoDimensionalArray::push_col_back(bool b)
             buffer[i][bufferColm - 1] = rand() % 100;
     }
     colm = bufferColm;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;
 }
 void TwoDimensionalArray::push_col_front(bool b)
@@ -315,7 +295,6 @@ void TwoDimensionalArray::push_col_front(bool b)
     }
     TwoDimensionalArray::clear(dimArray, row);
     colm = bufferColm;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;
 }
 bool TwoDimensionalArray::insert_col(const int& position, bool b)
@@ -328,11 +307,6 @@ bool TwoDimensionalArray::insert_col(const int& position, bool b)
     else if(realPosition == 0)
     {
         TwoDimensionalArray::push_col_front(b);
-        return true;
-    }
-    else if(realPosition == colm - 1)
-    {
-        TwoDimensionalArray::push_col_back(b);
         return true;
     }
     else
@@ -360,11 +334,7 @@ bool TwoDimensionalArray::insert_col(const int& position, bool b)
                 }
         TwoDimensionalArray::clear(dimArray, row);
         colm = bufferColm;
-        dimArray = TwoDimensionalArray::allocate(row, colm);
         dimArray = buffer;
-        //!!!!!Another method below!!!!
-        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-        //TwoDimensionalArray::clear(buffer, row);*/
         return true;
     }
 }
@@ -377,7 +347,6 @@ void TwoDimensionalArray::pop_col_back()
             buffer[i][j] = dimArray[i][j];
     TwoDimensionalArray::clear(dimArray, row); 
     colm = bufferColm;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;      
 }
 void TwoDimensionalArray::pop_col_front()
@@ -391,7 +360,6 @@ void TwoDimensionalArray::pop_col_front()
             }
     TwoDimensionalArray::clear(dimArray, row);
     colm = bufferColm;
-    dimArray = TwoDimensionalArray::allocate(row, colm);
     dimArray = buffer;
 
 }
@@ -427,11 +395,7 @@ bool TwoDimensionalArray::erase_col(const int& position)
                 }
         TwoDimensionalArray::clear(dimArray, row);
         colm = bufferColm;
-        dimArray = TwoDimensionalArray::allocate(row, colm);
         dimArray = buffer;
-        //!!!!!Another method below!!!!
-        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-        //TwoDimensionalArray::clear(buffer, row);
         return true;
     }   
 }
