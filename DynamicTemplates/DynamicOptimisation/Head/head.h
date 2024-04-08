@@ -288,7 +288,8 @@ void TwoDimensionalArray<T>::push_row_front(bool b)
     row = bufferRow;
     dimArray = buffer;
 }
-bool TwoDimensionalArray::insert_row(const int& position, bool b)
+template<typename T>
+bool TwoDimensionalArray<T>::insert_row(const int& position, bool b)
 {
     int realPosition = position -1;
     if(realPosition < 0 || realPosition >= row)
@@ -308,7 +309,7 @@ bool TwoDimensionalArray::insert_row(const int& position, bool b)
     else
     {
         int bufferRow = row + 1;
-        int** buffer = TwoDimensionalArray::allocate(bufferRow, colm);   
+        T** buffer = TwoDimensionalArray::allocate(bufferRow, colm);   
         for(int i = 0; i < realPosition; i++)
             for(int j = 0; j < colm; j++)
                 buffer[i][j] = dimArray[i][j];
@@ -330,11 +331,7 @@ bool TwoDimensionalArray::insert_row(const int& position, bool b)
                 }
         TwoDimensionalArray::clear(dimArray, row);
         row = bufferRow;
-        dimArray = TwoDimensionalArray::allocate(row, colm);
         dimArray = buffer;
-        //!!!!!Another method below!!!!
-        //TwoDimensionalArray::copy(dimArray, buffer, row, colm);
-        //TwoDimensionalArray::clear(buffer, row);
         return true;
     }
 }
