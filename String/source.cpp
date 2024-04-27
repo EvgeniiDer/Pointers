@@ -117,5 +117,27 @@ void MyString::shrink()
 }
 bool MyString::is_palindrom()
 {
-    
+    int count = 0;
+    for(int i = 0, j = SIZE - 1; i < SIZE / 2; i++, j-- )
+        {
+            if(str[i] == str[j])
+                count++;
+        }
+        if(count == SIZE / 2)
+            return true;
+        else
+            return false;
+}
+bool MyString::is_int_number()
+{
+    for(int i = 0; i < SIZE; i++)
+        {
+            if(!isdigit(str[i]))
+                return false;
+        }
+    return true;
+}
+int MyString::to_int_number()
+{
+    return atoi(str);
 }
